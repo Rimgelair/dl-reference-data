@@ -6,8 +6,16 @@ class DosageFormRepository {
     return executeQuery(DosageFormQueries.findAll);
   }
 
+  async findAllPretty() {
+    return executeQuery(DosageFormQueries.findAllPretty);
+  }
+
   async findById(id: bigint) {
     return executeQueryWithValues(DosageFormQueries.findById, [id]);
+  }
+
+  async findByIdPretty(id: bigint) {
+    return executeQueryWithValues(DosageFormQueries.findByIdPretty, [id]);
   }
 
   async findByDosageFormTypeId(dosageFormTypeId: number) {
