@@ -1,7 +1,7 @@
 import ReferenceDataService from "./src/app";
-import { initializeDb } from "./src/db";
+import { executeSQLFile } from "dlpos-core";
 
-initializeDb(`${__dirname}/resources/sql_scripts/refdata_tables.sql`).then(
+executeSQLFile(`${__dirname}/resources/sql_scripts/refdata_tables.sql`).then(
   (dbInitialized) => {
     if (dbInitialized) {
       ReferenceDataService.listen(5678, () => {
