@@ -1,5 +1,10 @@
+import { createConnectionPool } from "dlpos-core";
 import request from "supertest";
 import ReferenceDataService from "../src/app";
+
+beforeAll(() => {
+  createConnectionPool("dev_user", "localhost", "dl_staging", "password", 5432);
+});
 
 describe("Given manufacturers table is populated and valid ids: ", () => {
   test("/xibalba/v1/refdata/manufacturers should respond with all manufacturers on GET method", async () => {
