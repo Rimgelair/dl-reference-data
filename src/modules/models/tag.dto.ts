@@ -1,6 +1,10 @@
 class Tag {
-  id: number;
+  id?: number;
   name: string;
+
+  static fromJson(json: object) {
+    return Object.assign(new Tag(), json);
+  }
 }
 
 export default Tag;

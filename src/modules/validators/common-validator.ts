@@ -21,15 +21,15 @@ class CommonValidator {
     return validationResult;
   }
 
-  static validateNumber(maybeNumber: string) {
+  static isInt(maybeInt: string) {
     let validationResult: CommonValidatorResult = {
       isValid: false,
     };
-    if (Number.isNaN(parseInt(maybeNumber))) {
+    if (Number.isNaN(parseInt(maybeInt))) {
       validationResult.error = "is not a valid number";
     } else {
       validationResult.isValid = true;
-      validationResult.validValue = maybeNumber;
+      validationResult.validValue = maybeInt;
     }
 
     return validationResult;

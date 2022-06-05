@@ -2,7 +2,7 @@ import dosageFormTypeRepository from "../repositories/dosage-form-type.repositor
 import RefDataException from "../../exceptions/RefDataException";
 import { ServiceResponse } from "dlpos-core";
 import { QueryResult } from "pg";
-import CommonValidator from "../../utils/common-validator";
+import CommonValidator from "../validators/common-validator";
 import DosageFormType from "../models/dosage-form-type.dto";
 import DosageFormTypeValidator from "../validators/dosage-form-type.validator";
 import { Instruction } from "../../types";
@@ -21,7 +21,7 @@ class DosageFormTypeService {
   }
 
   async findById(id: string) {
-    let validationResult = CommonValidator.validateNumber(id);
+    let validationResult = CommonValidator.isInt(id);
     if (!validationResult.isValid) {
       throw new RefDataException(400, `id [${id}] ${validationResult.error}`);
     }

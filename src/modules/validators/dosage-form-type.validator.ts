@@ -4,7 +4,7 @@ import {
   DosageFormTypeServiceReadRequest,
   DosageFormTypeServiceWriteRequest,
 } from "../requests/dosage-form-type.requests";
-import CommonValidator from "../../utils/common-validator";
+import CommonValidator from "./common-validator";
 
 const maxReadRequestObjectLength = 2;
 const maxWriteRequestObjectLength = 3;
