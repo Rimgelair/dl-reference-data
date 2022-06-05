@@ -1,10 +1,10 @@
 import RefDataException from "../../exceptions/RefDataException";
 import { QueryResult } from "pg";
 import { ServiceResponse } from "dlpos-core";
-import dosageFormRepository from "./dosage-form.repository";
+import dosageFormRepository from "../repositories/dosage-form.repository";
 import QueryString from "qs";
-import DosageForm from "./dosage-form.dto";
-import DosageFormValidator from "./dosage-form.validator";
+import DosageForm from "../models/dosage-form.dto";
+import DosageFormValidator from "../validators/dosage-form.validator";
 
 class DosageFormService {
   async findAll() {

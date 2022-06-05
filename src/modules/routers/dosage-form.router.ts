@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response } from "express";
-import dosageFormController from "./dosage-form.controller";
+import dosageFormController from "../controllers/dosage-form.controller";
 
 const dosageFormRouter = express.Router();
 

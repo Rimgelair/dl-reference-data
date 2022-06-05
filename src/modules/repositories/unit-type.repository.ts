@@ -1,4 +1,4 @@
-import UnitTypeQueries from "./unit-type.queries";
+import UnitTypeQueries from "../queries/unit-type.queries";
 import { executeQuery, executeQueryWithValues } from "dlpos-core";
 
 class UnitTypeRespository {

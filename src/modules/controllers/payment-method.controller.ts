@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import paymentMethodService from "./payment-method.service";
+import paymentMethodService from "../services/payment-method.service";
 import { ServiceResponse } from "dlpos-core";
 class PaymentMethodConroller {
   async findAll(response: Response, next: NextFunction) {

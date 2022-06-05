@@ -1,5 +1,5 @@
 import { ServiceResponse } from "dlpos-core";
-import activeIngredientService from "./active-ingredient.service";
+import activeIngredientService from "../services/active-ingredient.service";
 import { NextFunction, Request, Response } from "express";
 
 class ActiveIngredientController {

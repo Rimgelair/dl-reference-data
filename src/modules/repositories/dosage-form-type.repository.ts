@@ -1,11 +1,11 @@
-import DosageFormQueries from "./dosage-form-type.queries";
-import ReferenceDataUpdateHistoryQueries from "../update-history/update-history.queries";
+import DosageFormQueries from "../queries/dosage-form-type.queries";
+import ReferenceDataUpdateHistoryQueries from "../queries/update-history.queries";
 import {
   executeQuery,
   executeQueryWithValues,
   executeDependentQueriesWithValues,
 } from "dlpos-core";
-import DosageFormType from "./dosage-form-type.dto";
+import DosageFormType from "../models/dosage-form-type.dto";
 import { Instruction } from "../../types";
 
 class DosageFormRepository {

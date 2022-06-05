@@ -3,9 +3,9 @@ import {
   executeQueryWithValues,
   executeDependentQueriesWithValues,
 } from "dlpos-core";
-import ActiveIngredientQueries from "./active-ingredient.queries";
-import ActiveIngredient from "./active-ingredient.dto";
-import ReferenceDataUpdateHistoryQueries from "../update-history/update-history.queries";
+import ActiveIngredientQueries from "../queries/active-ingredient.queries";
+import ActiveIngredient from "../models/active-ingredient.dto";
+import ReferenceDataUpdateHistoryQueries from "../queries/update-history.queries";
 import { Instruction } from "../../types";
 
 class ActiveIngredientRepository {

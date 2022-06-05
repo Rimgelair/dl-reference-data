@@ -1,10 +1,10 @@
-import dosageFormTypeRepository from "./dosage-form-type.repository";
+import dosageFormTypeRepository from "../repositories/dosage-form-type.repository";
 import RefDataException from "../../exceptions/RefDataException";
 import { ServiceResponse } from "dlpos-core";
 import { QueryResult } from "pg";
 import CommonValidator from "../../utils/common-validator";
-import DosageFormType from "./dosage-form-type.dto";
-import DosageFormTypeValidator from "./dosage-form-type.validator";
+import DosageFormType from "../models/dosage-form-type.dto";
+import DosageFormTypeValidator from "../validators/dosage-form-type.validator";
 import { Instruction } from "../../types";
 
 class DosageFormTypeService {

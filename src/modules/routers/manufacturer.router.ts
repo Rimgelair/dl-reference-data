@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response } from "express";
-import ManufacturerController from "./manufacturer.controller";
+import ManufacturerController from "../controllers/manufacturer.controller";
 
 const manufacturerRouter = express.Router();
 

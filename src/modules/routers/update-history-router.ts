@@ -1,5 +1,5 @@
 import express, { Request, Response, NextFunction } from "express";
-import referenceDataUpdateHistoryController from "./update-history.controller";
+import referenceDataUpdateHistoryController from "../controllers/update-history.controller";
 
 const refDataUpdateHistoryRouter = express.Router();
 

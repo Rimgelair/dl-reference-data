@@ -1,10 +1,10 @@
 import { ServiceResponse } from "dlpos-core";
 import { QueryResult } from "pg";
-import ActiveIngredient from "./active-ingredient.dto";
-import activeIngredientRepository from "./active-ingredient.repository";
+import ActiveIngredient from "../models/active-ingredient.dto";
+import activeIngredientRepository from "../repositories/active-ingredient.repository";
 import RefDataException from "../../exceptions/RefDataException";
 import QueryString from "qs";
-import ActiveIngredientValidator from "./active-ingredient.validator";
+import ActiveIngredientValidator from "../validators/active-ingredient.validator";
 
 class ActiveIngredientService {
   async findAll() {

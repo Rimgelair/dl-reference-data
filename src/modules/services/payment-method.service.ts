@@ -1,6 +1,6 @@
 import { ServiceResponse } from "dlpos-core";
 import { QueryResult } from "pg";
-import paymentMethodRepository from "./payment-method.repository";
+import paymentMethodRepository from "../repositories/payment-method.repository";
 import RefDataException from "../../exceptions/RefDataException";
 
 class PaymentMethodService {

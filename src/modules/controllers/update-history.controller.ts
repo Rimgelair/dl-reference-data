@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { ServiceResponse } from "dlpos-core";
-import referenceDataUpdateHistoryService from "./update-history.service";
+import referenceDataUpdateHistoryService from "../services/update-history.service";
 
 class ReferenceDataUpdateHistoryController {
   async getUpdateHistory(

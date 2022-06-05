@@ -1,6 +1,6 @@
 import { ServiceResponse } from "dlpos-core";
 import { QueryResult } from "pg";
-import unitRepository from "./unit.repository";
+import unitRepository from "../repositories/unit.repository";
 import RefDataException from "../../exceptions/RefDataException";
 
 class UnitService {

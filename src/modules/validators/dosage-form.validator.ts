@@ -1,5 +1,5 @@
 import QueryString from "qs";
-import DosageForm from "./dosage-form.dto";
+import DosageForm from "../models/dosage-form.dto";
 
 class DosageFormValidator {
   static validateCreateRequest(

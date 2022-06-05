@@ -1,6 +1,6 @@
 import { ServiceResponse } from "dlpos-core";
 import { QueryResult } from "pg";
-import tagRepository from "./tag.repository";
+import tagRepository from "../repositories/tag.repository";
 import RefDataException from "../../exceptions/RefDataException";
 
 class TagService {

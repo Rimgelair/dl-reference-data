@@ -1,9 +1,9 @@
 import { Instruction } from "../../types";
-import DosageFormType from "./dosage-form-type.dto";
+import DosageFormType from "../models/dosage-form-type.dto";
 import {
   DosageFormTypeServiceReadRequest,
   DosageFormTypeServiceWriteRequest,
-} from "./dosage-form-type.requests";
+} from "../requests/dosage-form-type.requests";
 import CommonValidator from "../../utils/common-validator";
 
 const maxReadRequestObjectLength = 2;

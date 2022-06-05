@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import supplierService from "./supplier.service";
+import supplierService from "../services/supplier.service";
 import { ServiceResponse } from "dlpos-core";
 
 class SupplierController {

@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import manufacturerService from "./manufacturer.service";
+import manufacturerService from "../services/manufacturer.service";
 import { ServiceResponse } from "dlpos-core";
 class ManufacturerController {
   async findAll(response: Response, next: NextFunction) {

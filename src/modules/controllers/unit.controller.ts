@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import unitService from "./unit.service";
+import unitService from "../services/unit.service";
 import { ServiceResponse } from "dlpos-core";
 
 class UnitController {

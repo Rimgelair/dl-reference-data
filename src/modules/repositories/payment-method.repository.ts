@@ -1,5 +1,5 @@
 import { executeQuery, executeQueryWithValues } from "dlpos-core";
-import PaymentMethodQueries from "./payment-method.queries";
+import PaymentMethodQueries from "../queries/payment-method.queries";
 
 class PaymentMethodRepository {
   async findAll() {

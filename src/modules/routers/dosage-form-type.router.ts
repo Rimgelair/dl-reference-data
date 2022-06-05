@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response } from "express";
-import dosageFormTypeController from "./dosage-form-type.controller";
+import dosageFormTypeController from "../controllers/dosage-form-type.controller";
 const dosageFormTypeRouter = express.Router();
 
 dosageFormTypeRouter.get(

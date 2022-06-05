@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response } from "express";
-import activeIngredientController from "./active-ingredient.controller";
+import activeIngredientController from "../controllers/active-ingredient.controller";
 
 const activeIngredientsRouter = express.Router();
 

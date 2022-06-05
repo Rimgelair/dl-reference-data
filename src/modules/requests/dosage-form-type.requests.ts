@@ -1,4 +1,4 @@
-import DosageFormType from "./dosage-form-type.dto";
+import DosageFormType from "../models/dosage-form-type.dto";
 
 class DosageFormTypeServiceReadRequest {
   correlationId?: string;

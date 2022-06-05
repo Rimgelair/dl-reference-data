@@ -1,5 +1,5 @@
 import QueryString from "qs";
-import ActiveIngredient from "./active-ingredient.dto";
+import ActiveIngredient from "../models/active-ingredient.dto";
 
 class ActiveIngredientValidator {
   static validateRequest(

@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response } from "express";
-import paymentMethodController from "./payment-method.controller";
+import paymentMethodController from "../controllers/payment-method.controller";
 
 const paymentMethodRouter = express.Router();
 

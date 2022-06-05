@@ -1,5 +1,5 @@
 import { executeQuery, executeQueryWithValues } from "dlpos-core";
-import UnitQueries from "./unit.queries";
+import UnitQueries from "../queries/unit.queries";
 
 class UnitRepository {
   async findAll() {

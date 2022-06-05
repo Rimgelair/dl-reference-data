@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import tagService from "./tag.service";
+import tagService from "../services/tag.service";
 import { ServiceResponse } from "dlpos-core";
 
 class TagController {

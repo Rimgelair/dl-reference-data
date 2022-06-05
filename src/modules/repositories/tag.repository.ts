@@ -1,5 +1,5 @@
 import { executeQuery, executeQueryWithValues } from "dlpos-core";
-import TagQueries from "./tag.queries";
+import TagQueries from "../queries/tag.queries";
 
 class TagRepository {
   async findAll() {

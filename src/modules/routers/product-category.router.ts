@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response } from "express";
-import productCategoryController from "./product-category.controller";
+import productCategoryController from "../controllers/product-category.controller";
 
 const productCategoryRouter = express.Router();
 

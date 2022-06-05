@@ -1,5 +1,5 @@
 import { executeQuery, executeQueryWithValues } from "dlpos-core";
-import SupplierQueries from "./supplier.queries";
+import SupplierQueries from "../queries/supplier.queries";
 
 class SupplierRepository {
   async findAll() {

@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response } from "express";
-import unitTypeController from "./unit-type.controller";
+import unitTypeController from "../controllers/unit-type.controller";
 const unitTypeRouter = express.Router();
 
 unitTypeRouter.get(

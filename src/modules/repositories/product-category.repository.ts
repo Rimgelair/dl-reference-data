@@ -1,5 +1,5 @@
 import { executeQuery, executeQueryWithValues } from "dlpos-core";
-import ProductCategoryQueries from "./product-category.queries";
+import ProductCategoryQueries from "../queries/product-category.queries";
 
 class ProductCategoryRepository {
   async findAll() {

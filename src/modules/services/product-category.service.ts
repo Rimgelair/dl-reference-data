@@ -1,6 +1,6 @@
 import { ServiceResponse } from "dlpos-core";
 import { QueryResult } from "pg";
-import productCategoryRepository from "./product-category.repository";
+import productCategoryRepository from "../repositories/product-category.repository";
 import RefDataException from "../../exceptions/RefDataException";
 
 class ProductCategoryService {

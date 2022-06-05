@@ -1,5 +1,5 @@
 import { executeQueryWithValues } from "dlpos-core";
-import ReferenceDataUpdateHistoryQueries from "./update-history.queries";
+import ReferenceDataUpdateHistoryQueries from "../queries/update-history.queries";
 
 class ReferenceDataUpdateHistoryRepository {
   async getUpdateHistory(tableName: string, refDataId: number) {

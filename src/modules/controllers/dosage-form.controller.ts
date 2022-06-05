@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { ServiceResponse } from "dlpos-core";
-import dosageFormService from "./dosage-form.service";
+import dosageFormService from "../services/dosage-form.service";
 
 class DosageFormController {
   async findAll(response: Response, next: NextFunction) {

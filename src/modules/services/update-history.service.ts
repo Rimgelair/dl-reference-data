@@ -1,10 +1,10 @@
 import { ServiceResponse } from "dlpos-core";
 import { QueryResult } from "pg";
 import QueryString from "qs";
-import updateHistoryRepository from "./update-history.repository";
-import UpdateHistoryValidator from "./update-history.validator";
+import updateHistoryRepository from "../repositories/update-history.repository";
+import UpdateHistoryValidator from "../validators/update-history.validator";
 import RefDataException from "../../exceptions/RefDataException";
-import ReferenceDataUpdateHistoryEntry from "./update-history.dto";
+import ReferenceDataUpdateHistoryEntry from "../models/update-history.dto";
 
 class ReferenceDataUpdateHistoryService {
   async getUpdateHistory(queries: QueryString.ParsedQs) {

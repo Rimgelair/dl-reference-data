@@ -1,6 +1,6 @@
 import { ServiceResponse } from "dlpos-core";
 import { QueryResult } from "pg";
-import manufacturerRepository from "./manufacturer.repository";
+import manufacturerRepository from "../repositories/manufacturer.repository";
 import RefDataException from "../../exceptions/RefDataException";
 
 class ManufacturerService {
