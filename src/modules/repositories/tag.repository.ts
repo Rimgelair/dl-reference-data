@@ -29,7 +29,7 @@ class TagRepository {
   async update(updatedTag: Tag, userId: number) {
     return executeDependentQueriesWithValues(
       TagQueries.UPDATE,
-      [updatedTag.name],
+      [updatedTag.name, updatedTag.id],
       ReferenceDataUpdateHistoryQueries.CREATE_UPDATE_HISTORY_ENTRY,
       [
         Instruction.UPDATE,

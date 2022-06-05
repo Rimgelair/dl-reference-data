@@ -17,4 +17,18 @@ tagRouter.get(
   }
 );
 
+tagRouter.post(
+  "/xibalba/v1/refdata/tags",
+  (request: Request, response: Response, next: NextFunction) => {
+    tagController.create(request, response, next);
+  }
+);
+
+tagRouter.put(
+  "/xibalba/v1/refdata/tags",
+  (request: Request, response: Response, next: NextFunction) => {
+    tagController.update(request, response, next);
+  }
+);
+
 export default tagRouter;

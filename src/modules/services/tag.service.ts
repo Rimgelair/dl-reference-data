@@ -4,6 +4,11 @@ import tagRepository from "../repositories/tag.repository";
 import RefDataException from "../../exceptions/RefDataException";
 import Tag from "../models/tag.dto";
 import CommonValidator from "../validators/common-validator";
+import { newTagRequest, updateTagRequest } from "../validators/tag.validator";
+import { RequiredNumberSchema } from "yup/lib/number";
+import { AssertsShape, Assign, ObjectShape } from "yup/lib/object";
+import { RequiredStringSchema } from "yup/lib/string";
+import { AnyObject } from "yup/lib/types";
 
 class TagService {
   async findAll() {
@@ -35,6 +40,72 @@ class TagService {
       };
       return serviceResponse;
     }
+  }
+
+  async create(createRequestBody: any) {
+    let serviceResponse: ServiceResponse = {
+      status: 200,
+    };
+    let validationResult: AssertsShape<
+      Assign<
+        ObjectShape,
+        {
+          name: RequiredStringSchema<string, AnyObject>;
+          userId: RequiredNumberSchema<number, AnyObject>;
+        }
+      >
+    >;
+
+    try {
+      validationResult = await newTagRequest.validate(createRequestBody, {
+        abortEarly: false,
+      });
+    } catch (validationError) {
+      let exception: RefDataException = new RefDataException(
+        400,
+        "Invalid request."
+      );
+      exception.addErrors(validationError.errors);
+      throw exception;
+    }
+
+    let newTag: Tag = Tag.fromJson(createRequestBody);
+    await tagRepository.create(newTag, validationResult.userId);
+
+    return serviceResponse;
+  }
+
+  async update(updateRequestBody: any) {
+    let serviceResponse: ServiceResponse = {
+      status: 200,
+    };
+    let validationResult: AssertsShape<
+      Assign<
+        ObjectShape,
+        {
+          name: RequiredStringSchema<string, AnyObject>;
+          userId: RequiredNumberSchema<number, AnyObject>;
+        }
+      >
+    >;
+
+    try {
+      validationResult = await updateTagRequest.validate(updateRequestBody, {
+        abortEarly: false,
+      });
+    } catch (validationError) {
+      let exception: RefDataException = new RefDataException(
+        400,
+        "Invalid request."
+      );
+      exception.addErrors(validationError.errors);
+      throw exception;
+    }
+
+    let newTag: Tag = Tag.fromJson(updateRequestBody);
+    await tagRepository.update(newTag, validationResult.userId);
+
+    return serviceResponse;
   }
 }
 
