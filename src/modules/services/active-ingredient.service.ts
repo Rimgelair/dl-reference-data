@@ -4,7 +4,14 @@ import ActiveIngredient from "../models/active-ingredient.dto";
 import activeIngredientRepository from "../repositories/active-ingredient.repository";
 import RefDataException from "../../exceptions/RefDataException";
 import QueryString from "qs";
-import ActiveIngredientValidator from "../validators/active-ingredient.validator";
+import {
+  newActiveIngredientRequest,
+  updateActiveIngredientRequest,
+} from "../validators/active-ingredient.validator";
+import { RequiredNumberSchema } from "yup/lib/number";
+import { AssertsShape, Assign, ObjectShape } from "yup/lib/object";
+import { RequiredStringSchema } from "yup/lib/string";
+import { AnyObject } from "yup/lib/types";
 
 class ActiveIngredientService {
   async findAll() {
@@ -41,28 +48,43 @@ class ActiveIngredientService {
     }
   }
 
-  async create(requestBody: any, queryParams: QueryString.ParsedQs) {
+  async create(createRequestBody: any) {
     let serviceResponse: ServiceResponse = {
       status: 200,
     };
 
-    let newActiveIngredient: ActiveIngredient =
-      ActiveIngredient.fromJson(requestBody);
-    let validatorResponse = ActiveIngredientValidator.validateRequest(
-      newActiveIngredient,
-      queryParams
-    );
-    if (validatorResponse.errors.length > 0) {
+    let validationResult: AssertsShape<
+      Assign<
+        ObjectShape,
+        {
+          name: RequiredStringSchema<string, AnyObject>;
+          userId: RequiredNumberSchema<number, AnyObject>;
+        }
+      >
+    >;
+
+    try {
+      validationResult = await newActiveIngredientRequest.validate(
+        createRequestBody,
+        {
+          abortEarly: false,
+        }
+      );
+    } catch (validationError) {
       let exception: RefDataException = new RefDataException(
         400,
         "Invalid request."
       );
-      exception.addErrors(validatorResponse.errors);
+      exception.addErrors(validationError.errors);
       throw exception;
     }
+
+    let newActiveIngredient: ActiveIngredient =
+      ActiveIngredient.fromJson(createRequestBody);
+
     await activeIngredientRepository.create(
       newActiveIngredient,
-      parseInt(queryParams.userId.toString())
+      validationResult.userId
     );
 
     serviceResponse.message = "Active ingredient successfully created!";
@@ -70,28 +92,35 @@ class ActiveIngredientService {
     return serviceResponse;
   }
 
-  async update(requestBody: any, queryParams: QueryString.ParsedQs) {
+  async update(updateRequestBody: any) {
     let serviceResponse: ServiceResponse = {
       status: 200,
     };
 
-    let updatedActiveIngredient: ActiveIngredient =
-      ActiveIngredient.fromJson(requestBody);
-    let validatorResponse = ActiveIngredientValidator.validateUpdateRequest(
-      updatedActiveIngredient,
-      queryParams
-    );
-    if (validatorResponse.errors.length > 0) {
+    let validationResult;
+
+    try {
+      validationResult = await newActiveIngredientRequest.validate(
+        updateRequestBody,
+        {
+          abortEarly: false,
+        }
+      );
+    } catch (validationError) {
       let exception: RefDataException = new RefDataException(
         400,
         "Invalid request."
       );
-      exception.addErrors(validatorResponse.errors);
+      exception.addErrors(validationError.errors);
       throw exception;
     }
+
+    let updatedActiveIngredient: ActiveIngredient =
+      ActiveIngredient.fromJson(updateRequestBody);
+
     await activeIngredientRepository.update(
       updatedActiveIngredient,
-      parseInt(queryParams.userId.toString())
+      validationResult.userId
     );
 
     serviceResponse.message = "Active ingredient successfully updated!";
