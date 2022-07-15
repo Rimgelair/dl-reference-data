@@ -4,8 +4,11 @@ import { ServiceResponse } from "dlpos-core";
 import { QueryResult } from "pg";
 import CommonValidator from "../validators/common-validator";
 import DosageFormType from "../models/dosage-form-type.dto";
-import DosageFormTypeValidator from "../validators/dosage-form-type.validator";
 import { Instruction } from "../../types";
+import {
+  newDosageFormTypeRequest,
+  updateDosageFormTypeRequest,
+} from "../validators/dosage-form-type.validator";
 
 class DosageFormTypeService {
   async findAll(): Promise<ServiceResponse> {
@@ -43,57 +46,63 @@ class DosageFormTypeService {
     }
   }
 
-  async create(body: any) {
-    let validationResult = DosageFormTypeValidator.validate(
-      body,
-      Instruction.CREATE
-    );
+  async create(requestBody: any) {
     let serviceResponse: ServiceResponse = {
       status: 200,
     };
-
-    if (validationResult.isValid) {
-      await dosageFormTypeRepository.create(
-        validationResult.validWriteRequest.dosageFormType,
-        validationResult.validWriteRequest.userId
-      );
-      serviceResponse.message = "Dosage Form Type Created Successfully!";
-    }
-    if (validationResult.errors.length > 0) {
+    let validationResult: any;
+    try {
+      validationResult = await newDosageFormTypeRequest.validate(requestBody, {
+        abortEarly: false,
+      });
+    } catch (validationError) {
       let exception: RefDataException = new RefDataException(
         400,
         "Invalid request."
       );
-      exception.addErrors(validationResult.errors);
+      exception.addErrors(validationError.errors);
       throw exception;
     }
+
+    let newDosageFormType: DosageFormType =
+      DosageFormType.fromJson(requestBody);
+
+    await dosageFormTypeRepository.create(
+      newDosageFormType,
+      validationResult.id
+    );
+    serviceResponse.message = "Dosage Form Type Created Successfully!";
+
     return serviceResponse;
   }
 
-  async update(body: any) {
-    let validationResult = DosageFormTypeValidator.validate(
-      body,
-      Instruction.UPDATE
-    );
+  async update(requestBody: any) {
     let serviceResponse: ServiceResponse = {
       status: 200,
     };
 
-    if (validationResult.isValid) {
-      await dosageFormTypeRepository.update(
-        validationResult.validWriteRequest.dosageFormType,
-        validationResult.validWriteRequest.userId
-      );
-      serviceResponse.message = "Dosage Form Type Updated Successfully!";
-    }
-    if (validationResult.errors.length > 0) {
+    let validationResult: any;
+
+    try {
+      validationResult = updateDosageFormTypeRequest.validate(requestBody);
+    } catch (validationError) {
       let exception: RefDataException = new RefDataException(
         400,
         "Invalid request."
       );
-      exception.addErrors(validationResult.errors);
+      exception.addErrors(validationError.errors);
       throw exception;
     }
+
+    let updatedDosageFormType: DosageFormType =
+      DosageFormType.fromJson(requestBody);
+
+    await dosageFormTypeRepository.update(
+      updateDosageFormTypeRequest,
+      validationResult.id
+    );
+    serviceResponse.message = "Dosage Form Type Updated Successfully!";
+
     return serviceResponse;
   }
 }
