@@ -3,7 +3,6 @@ import { QueryResult } from "pg";
 import ActiveIngredient from "../models/active-ingredient.dto";
 import activeIngredientRepository from "../repositories/active-ingredient.repository";
 import RefDataException from "../../exceptions/RefDataException";
-import QueryString from "qs";
 import {
   newActiveIngredientRequest,
   updateActiveIngredientRequest,
@@ -97,10 +96,18 @@ class ActiveIngredientService {
       status: 200,
     };
 
-    let validationResult;
+    let validationResult: AssertsShape<
+      Assign<
+        ObjectShape,
+        {
+          name: RequiredStringSchema<string, AnyObject>;
+          userId: RequiredNumberSchema<number, AnyObject>;
+        }
+      >
+    >;
 
     try {
-      validationResult = await newActiveIngredientRequest.validate(
+      validationResult = await updateActiveIngredientRequest.validate(
         updateRequestBody,
         {
           abortEarly: false,
